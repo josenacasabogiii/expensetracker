@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4">👤 Profile Dashboard</h2>
+
+    <div class="row g-4">
+        <div class="col-md-4 text-center">
+            <img src="https://i.pravatar.cc/150?u={{ session['username'] }}" class="rounded-circle mb-3" alt="Avatar">
+            <h4>{{ username }}</h4>
+        </div>
+        <div class="col-md-8">
+            <div class="card p-3">
+                <h5>Total Spending: <span class="text-success">₱{{ total_spent }}</span></h5>
+                <p>💰 Average Daily Spending: ₱{{ avg_daily }}</p>
+                <p>📅 Average Monthly Spending: ₱{{ avg_monthly }}</p>
+
+                <h5 class="mt-3">🔥 Top Categories</h5>
+                <ul class="list-group">
+                    {% for cat in top_categories %}
+                    <li class="list-group-item d-flex justify-content-between">
+                        {{ cat[0] }}
+                        <span>₱{{ cat[1] }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
